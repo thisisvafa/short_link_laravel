@@ -9,12 +9,10 @@ class ShortLink extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'code', 'link'
+        'code',
+        'link',
+        'click',
+        'type'
     ];
 }

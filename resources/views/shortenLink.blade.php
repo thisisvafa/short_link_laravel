@@ -34,6 +34,7 @@
                         <th>ID</th>
                         <th>Short Link</th>
                         <th>Link</th>
+                        <th>click</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -42,6 +43,7 @@
                             <td>{{ $row->id }}</td>
                             <td><a href="{{ route('shorten.link', $row->code) }}" target="_blank">{{ route('shorten.link', $row->code) }}</a></td>
                             <td>{{ \Illuminate\Support\Str::limit($row->link, 150) }}</td>
+                            <td>{{ $row->click }}</td>
                         </tr>
                     @endforeach
                     </tbody>

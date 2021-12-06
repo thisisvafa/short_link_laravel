@@ -32,9 +32,13 @@ class ShortLinkController extends Controller
             'link' => 'required|url'
         ]);
 
-        $input['link'] = $request->link;
-        $input['code'] = Str::random(6);
-        ShortLink::create($input);
+        $short_links = ShortLink::create([
+            'code'  => Str::random(6),
+            'link'  => $request->link,
+            'click' => 0,
+            'type'  => null,
+        ]);
+
         return redirect('')->with('success', 'Shorten Link Generated Successfully!');
     }
 
@@ -47,6 +51,9 @@ class ShortLinkController extends Controller
     public function shortenLink($code)
     {
         $find = ShortLink::where('code', $code)->first();
+        $short_links = $find->update([
+            'click' => $find->click+1,
+        ]);
         return redirect($find->link);
     }
 }

@@ -17,6 +17,8 @@ class CreateShortLinksTable extends Migration
             $table->bigIncrements('id');
             $table->string('code');
             $table->text('link');
+            $table->integer('click');
+            $table->string('type')->nullable();
             $table->timestamps();
         });
     }
